@@ -16,7 +16,10 @@ Now, if you do a `git remote -v` it should show you two remotes: an origin point
 
 1. Before starting work on any changes make sure you pull the latest changes on the master branch from **upstream**:
 
-`git pull upstream master`
+```
+git checkout master
+git pull upstream master
+```
 
 2. Create a new branch for your changes, based on the master branch you just updared:
 `git branch addTopicsApiEndpoint master` (make sure you replace "addTopicsApiEndpoint" with something else, indicative of the work you're doing)
@@ -42,7 +45,7 @@ git rebase upstream/master
 If there are any merge conflicts, this is the part where you will be asked to solve them.
 
 Once you are ok with your changes push them to your forked repository:
-`git push -u origin addTopicsApiEndpoint`
+`git push origin addTopicsApiEndpoint`
 
 Then go to your forked repository's GitHub page where you should now see a button to add a PR.
 
