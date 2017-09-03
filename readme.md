@@ -21,7 +21,7 @@ This repository is part of CodeYourFuture's [group projects](https://github.com/
 
 ## Contributing
 
-# Adding the upstream repo
+### Adding the upstream repo
 
 When working with Git, there are 3 main repositories (versions of your project) you have to keep track of:
 - local: this is your local project, where you make changes first
@@ -34,7 +34,7 @@ Then, add the upstream repository:
 
 Now, if you do a `git remote -v` it should show you two remotes: an origin pointing to a URL with your username in it, and an upstream, pointing to **git@github.com:rarmatei/progress-tracker.git**.
 
-# Starting work:
+### Starting work:
 
 Before starting work on any changes make sure you create a new branch for them, based on master:
 `git branch new-work-name master` (make sure you replace "new-work-name" with a small indication of the work you're doing)
@@ -42,13 +42,13 @@ Before starting work on any changes make sure you create a new branch for them, 
 Switch to that branch:
 `git checkout new-work-name`
 
-# Working on the branch
+### Working on the branch
 
 Do your changes, commiting them as you work:
 `git add .`
 `git commit -m "my commit message"`
 
-# Ready to submit
+### Ready to submit
 
 Before you submit your changes, make sure you get any latest changes that have been merged in to the upstream repo:
 
