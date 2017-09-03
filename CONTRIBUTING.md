@@ -14,10 +14,14 @@ Now, if you do a `git remote -v` it should show you two remotes: an origin point
 
 ### Starting work:
 
-Before starting work on any changes make sure you create a new branch for them, based on master:
+1. Before starting work on any changes make sure you pull the latest changes on the master branch from **upstream**:
+
+`git pull upstream master`
+
+2. Create a new branch for your changes, based on the master branch you just updared:
 `git branch addTopicsApiEndpoint master` (make sure you replace "addTopicsApiEndpoint" with something else, indicative of the work you're doing)
 
-Switch to that branch:
+3. Switch to that branch:
 `git checkout addTopicsApiEndpoint`
 
 ### Working on the branch
