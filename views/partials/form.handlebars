@@ -1,1 +1,42 @@
 Edit topic form
+
+<div class="row">
+    <p>Create a new Blog post</p>
+    <form action="/save-topic" method="POST" name="sentMessage" id="contactForm" novalidate>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>After Class</label>
+                <input name="afterClass" type="text" class="form-control" placeholder="Blog afterClass" id="afterClass" required data-validation-required-message="Please enter the title of the blog post.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>monday</label>
+                <textarea name="monday"rows="5" class="form-control" placeholder="monday" id="monday" required data-validation-required-message="Please enter the summary of the blog post."></textarea>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>wednesday</label>
+                <textarea name="wednesday" rows="5" class="form-control" placeholder="wednesday" id="wednesday" required data-validation-required-message="Please enter the contents of the blog post."></textarea>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>thursday</label>
+                <textarea name="thursday" rows="5" class="form-control" placeholder="thursday" id="thursday" required data-validation-required-message="Please enter the contents of the blog post."></textarea>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <br>
+        <div id="success"></div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <button id="submitPost" class="btn btn-default">Send</button>
+            </div>
+        </div>
+    </form>
+</div>
