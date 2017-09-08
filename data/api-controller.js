@@ -12,6 +12,9 @@ const ProgressSchema = new Schema({
     beforeClass: {
         type: Number
     },
+    afterClass: {
+        type: Number
+    },
     monday: {
         type: Number
     },
@@ -44,6 +47,7 @@ router.post("/api/student", function (req, res, next) {
             studentName: req.body.studentName,
             supjectName: req.body.progressSchudle.supjectName,
             beforeClass: req.body.progressSchudle.beforeClass,
+            afterClass: req.body.progressSchudle.afterClass,
             monday: req.body.progressSchudle.monday,
             wednesday: req.body.progressSchudle.wednesday,
             thursday: req.body.progressSchudle.thursday,
@@ -58,6 +62,7 @@ router.put("/api/student/:id", function (req, res, next) {
             res.send({
                 studentName: req.body.studentName,
                 supjectName: req.body.progressSchudle.supjectName,
+                beforeClass: req.body.progressSchudle.beforeClass,
                 beforeClass: req.body.progressSchudle.beforeClass,
                 monday: req.body.progressSchudle.monday,
                 wednesday: req.body.progressSchudle.wednesday,
