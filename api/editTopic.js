@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Topic = require("../data/api-controller");
+const Topic = require("../models/topic");
 
 router.put("/topics/:id", function (req, res, next) {
     Topic.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
