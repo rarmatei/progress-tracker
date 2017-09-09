@@ -4,16 +4,11 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
-const mongoose = require('mongoose');
+
 
 const index = require('./routes/index');
 
 const app = express();
-
-// connect to mongodb
-mongoose.connect('mongodb://localhost/myapp');
-mongoose.Promise = global.Promise;
 
 // view engine setup
 app.engine('handlebars', exphbs({ defaultLayout: 'layout' }));
@@ -26,13 +21,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(require("./data/api-controller"));
-
-app.use(function (err, req, res, next) {
-  console.log(err); // to see properties of message in our console
-  res.status(422).send({ error: err.message });
-});
 
 app.use('/', index);
 
