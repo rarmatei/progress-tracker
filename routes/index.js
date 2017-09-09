@@ -52,6 +52,9 @@ router.get('/', function (req, res, next) {
           label: 'Monday',
         },
         {
+          label: 'Tuesday',
+        }, 
+        {
           label: 'Wednesday',
         },
         {
