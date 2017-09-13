@@ -1,8 +1,4 @@
 
-<table class="table table--progress">
-	<tr>
-		{{#each columns}}
-		    <th>
 					{{#if this.hideLabel}}
 						<span class="screen-reader">{{this.label}}</span>
 					{{else}}
@@ -26,10 +22,6 @@
 				</button>
 			</td>
 		{{/each}}
-	</tr>
-</table>
-<div class="button-row">
-	 {{>form}}
 	<button class="button button--add">
 		Add Topic
 	</button>
