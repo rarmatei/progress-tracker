@@ -29,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', require("./api/addTopic"));
 app.use('/api', require("./api/editTopic"));
+app.use('/api', require("./api/deleteTopic"));
 
 app.use(function (err, req, res, next) {
   console.log(err); // to see properties of message in our console
