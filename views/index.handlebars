@@ -1,27 +1,29 @@
-
-					{{#if this.hideLabel}}
-						<span class="screen-reader">{{this.label}}</span>
-					{{else}}
-						{{this.label}}
-					{{/if}}
-				</th>
+<table class="table table--progress">
+	<tr>
+		{{#each columns}}
+		<th>
+			{{#if this.hideLabel}}
+			<span class="screen-reader">{{this.label}}</span> {{else}} {{this.label}} {{/if}}
+		</th>
 		{{/each}}
 	</tr>
 	<tr>
 		{{#each topics}}
-			<th>{{this.title}}</th>
-			<td>{{this.beforeClass}}</td>
-			<td>{{this.afterClass}}</td>
-			<td>{{this.monday}}</td>
-			<td>{{this.wednesday}}</td>
-			<td>{{this.thursday}}</td>
-			<td>{{this.friday}}</td>
-			<td>
-				<button class="button button--edit">
+		<th>{{this.title}}</th>
+		<td>{{this.beforeClass}}</td>
+		<td>{{this.afterClass}}</td>
+		<td>{{this.monday}}</td>
+		<td>{{this.wednesday}}</td>
+		<td>{{this.thursday}}</td>
+		<td>{{this.friday}}</td>
+		<td>
+			<button class="button button--edit">
 					Edit
 				</button>
-			</td>
-		{{/each}}
+		</td>
+		{{/each}} - </tr>
+</table>
+<div class="button-row">
 	<button class="button button--add">
 		Add Topic
 	</button>
