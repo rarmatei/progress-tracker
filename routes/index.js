@@ -2,14 +2,16 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
+
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
 
   /**
    * Define a callback function to render the
    * homepage once the topics data has been loaded
    */
-  const renderTopics = function(error, file) {
+  const renderTopics = function (error, file) {
 
     if (error) {
       throw error;
@@ -34,6 +36,9 @@ router.get('/', function(req, res, next) {
         {
           label: 'Monday',
         },
+        {
+          label: 'Tuesday',
+        }, 
         {
           label: 'Wednesday',
         },
