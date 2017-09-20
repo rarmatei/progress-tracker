@@ -3,13 +3,22 @@ const router = express.Router();
 const fs = require('fs');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+
+
+router.get('/add', function (req, res) {
+  res.render('add');
+});
+
+router.get('/edit', function (req, res) {
+  res.render('edit');
+});
+router.get('/', function (req, res, next) {
 
   /**
    * Define a callback function to render the
    * homepage once the topics data has been loaded
    */
-  const renderTopics = function(error, file) {
+  const renderTopics = function (error, file) {
 
     if (error) {
       throw error;
