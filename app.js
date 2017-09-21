@@ -31,6 +31,8 @@ app.use('/api', require("./api/addTopic"));
 app.use('/api', require("./api/editTopic"));
 app.use('/api', require("./api/deleteTopic"));
 
+app.use('/',index);
+
 
 app.use(function (err, req, res, next) {
   console.log(err); // to see properties of message in our console
