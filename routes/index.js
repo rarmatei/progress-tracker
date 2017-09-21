@@ -5,6 +5,15 @@ const fs = require('fs');
 
 
 /* GET home page. */
+
+
+router.get('/add', function (req, res) {
+  res.render('add');
+});
+
+router.get('/edit', function (req, res) {
+  res.render('edit');
+});
 router.get('/', function (req, res, next) {
 
   /**
@@ -38,7 +47,7 @@ router.get('/', function (req, res, next) {
         },
         {
           label: 'Tuesday',
-        }, 
+        },
         {
           label: 'Wednesday',
         },

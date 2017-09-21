@@ -31,12 +31,13 @@ app.use('/api', require("./api/addTopic"));
 app.use('/api', require("./api/editTopic"));
 app.use('/api', require("./api/deleteTopic"));
 
+app.use('/',index);
+
+
 app.use(function (err, req, res, next) {
   console.log(err); // to see properties of message in our console
   res.status(422).send({ error: err.message });
 });
-
-app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
