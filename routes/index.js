@@ -1,11 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-
-
-
+const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
+const bodyParser = require('body-parser')
+router.use(bodyParser.json());
 /* GET home page. */
 
+
+
+router.get('/', function (req, res) {
+  res.render('/');
+});
 
 router.get('/add', function (req, res) {
   res.render('add');
@@ -14,63 +21,23 @@ router.get('/add', function (req, res) {
 router.get('/edit', function (req, res) {
   res.render('edit');
 });
-router.get('/', function (req, res, next) {
+//router.get('/', function (req, res, next) {
 
-  /**
+/**
    * Define a callback function to render the
-   * homepage once the topics data has been loaded
-   */
-  const renderTopics = function (error, file) {
+ * homepage once the topics data has been loaded
+ */
 
-    if (error) {
-      throw error;
-    }
+router.get('/topics', (req, res, next) => {
+  const mongoConnection = 'mongodb://localhost:27017/profile';
 
-    const fileData = file.toString();
-    const topicsData = JSON.parse(fileData);
-    res.render('index', {
-      title: 'Progress Tracker',
-      description: 'Keep track of your progress learning new topics. Add a topic below and rate your knowledge of the topic between 1 (no knowledge) and 10 (very confident).',
-      columns: [
-        {
-          label: 'Topic',
-          hideLabel: true
-        },
-        {
-          label: 'Before Class',
-        },
-        {
-          label: 'After Class',
-        },
-        {
-          label: 'Monday',
-        },
-        {
-          label: 'Tuesday',
-        },
-        {
-          label: 'Wednesday',
-        },
-        {
-          label: 'Thursday',
-        },
-        {
-          label: 'Friday',
-        },
-        {
-          label: 'Edit',
-          hideLabel: true
-        }
-      ],
-      topics: topicsData,
+  MongoClient.connect(mongoConnection, (err, db) => {
+    const cursor = db.collection('topics').find({});
+    cursor.toArray((error, topics) => {
+      db.close();
+      res.json(topics);
     });
-  };
-
-  /**
-   * Load the topics file
-   */
-  const topicsFilePath = __dirname + '/../data/topics.json';
-  fs.readFile(topicsFilePath, renderTopics);
+  });
 });
 
 module.exports = router;
