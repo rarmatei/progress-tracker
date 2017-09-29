@@ -6,13 +6,16 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const bodyParser = require('body-parser')
 router.use(bodyParser.json());
+const mongoConnection = process.env.MONGODB_URI || 'mongodb://localhost:27017/progressTracker';
 /* GET home page. */
+
+const Topic = require('../models/topic');
 
 
 
 router.get('/', function (req, res) {
-  res.render('/');
-});
+  res.render('index');
+})
 
 router.get('/add', function (req, res) {
   res.render('add');
@@ -29,15 +32,13 @@ router.get('/edit', function (req, res) {
  */
 
 router.get('/topics', (req, res, next) => {
-  const mongoConnection = 'mongodb://localhost:27017/profile';
-
-  MongoClient.connect(mongoConnection, (err, db) => {
-    const cursor = db.collection('topics').find({});
-    cursor.toArray((error, topics) => {
-      db.close();
-      res.json(topics);
-    });
+  mongoose.connect(mongoConnection);
+  Topic.find({}, (error, topics) => {
+    res.render('details', {
+      topics: topics
+    })
   });
 });
+
 
 module.exports = router;
