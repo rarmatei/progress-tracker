@@ -1,11 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-
-
-
+const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
+const bodyParser = require('body-parser')
+router.use(bodyParser.json());
+const mongoConnection = process.env.MONGODB_URI || 'mongodb://localhost:27017/progressTracker';
 /* GET home page. */
 
+const Topic = require('../models/topic');
+
+
+
+router.get('/', function (req, res) {
+  res.render('index');
+})
 
 router.get('/add', function (req, res) {
   res.render('add');
@@ -14,63 +24,21 @@ router.get('/add', function (req, res) {
 router.get('/edit', function (req, res) {
   res.render('edit');
 });
-router.get('/', function (req, res, next) {
+//router.get('/', function (req, res, next) {
 
-  /**
+/**
    * Define a callback function to render the
-   * homepage once the topics data has been loaded
-   */
-  const renderTopics = function (error, file) {
+ * homepage once the topics data has been loaded
+ */
 
-    if (error) {
-      throw error;
-    }
-
-    const fileData = file.toString();
-    const topicsData = JSON.parse(fileData);
-    res.render('index', {
-      title: 'Progress Tracker',
-      description: 'Keep track of your progress learning new topics. Add a topic below and rate your knowledge of the topic between 1 (no knowledge) and 10 (very confident).',
-      columns: [
-        {
-          label: 'Topic',
-          hideLabel: true
-        },
-        {
-          label: 'Before Class',
-        },
-        {
-          label: 'After Class',
-        },
-        {
-          label: 'Monday',
-        },
-        {
-          label: 'Tuesday',
-        },
-        {
-          label: 'Wednesday',
-        },
-        {
-          label: 'Thursday',
-        },
-        {
-          label: 'Friday',
-        },
-        {
-          label: 'Edit',
-          hideLabel: true
-        }
-      ],
-      topics: topicsData,
-    });
-  };
-
-  /**
-   * Load the topics file
-   */
-  const topicsFilePath = __dirname + '/../data/topics.json';
-  fs.readFile(topicsFilePath, renderTopics);
+router.get('/topics', (req, res, next) => {
+  mongoose.connect(mongoConnection);
+  Topic.find({}, (error, topics) => {
+    res.render('details', {
+      topics: topics
+    })
+  });
 });
+
 
 module.exports = router;

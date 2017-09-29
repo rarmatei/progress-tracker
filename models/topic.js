@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const schema = new Schema({
     subjectName:{
         type:String,
-        require
+        required: true
     },
     beforeclass: Number,
     afterClass: Number,
